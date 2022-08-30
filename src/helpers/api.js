@@ -17,13 +17,11 @@ export const fetchMovieDetails = async movieId => {
 
 export const fetchMovieCredits = async movieId => {
   const data = await axios.get(`/movie/${movieId}/credits`);
-
   return { data };
 };
 
 export const fetchMovieReviews = async movieId => {
   const data = await axios.get(`/movie/${movieId}/reviews`);
-
   return { data };
 };
 

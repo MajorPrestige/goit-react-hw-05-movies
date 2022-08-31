@@ -1,0 +1,32 @@
+.form {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 1440px;
+}
+
+.label {
+  display: block;
+  text-align: center;
+}
+
+.input {
+  font-size: 24px;
+  padding: 5px;
+  width: 800px;
+  background-color: #606dbc;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+}
+
+.btn {
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 5px 20px;
+  background-color: #465298;
+  font-size: 24px;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+}

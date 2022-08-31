@@ -28,7 +28,7 @@ const HomePage = () => {
       )}
       {error && <div>{error}</div>}
       <ul className={s.list}>
-        {movies?.map(({ id, title, poster_path }) => (
+        {movies.map(({ id, title, poster_path }) => (
           <li className={s.item} key={id}>
             <Link className={s.link} to={`/movies/${id}`}>
               <img

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Outlet } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { fetchMovieDetails } from 'helpers/api';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import Section from 'components/Section/Section';
@@ -11,6 +11,9 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const prevPage = location.state?.from ?? '/';
 
   useEffect(() => {
     setLoading(true);
@@ -20,8 +23,7 @@ const MovieDetailsPage = () => {
       .finally(() => setLoading(false));
   }, [movieId]);
 
-  const navigate = useNavigate();
-  const goBack = () => navigate('/');
+  const goBack = () => navigate(prevPage);
 
   return (
     <Section>

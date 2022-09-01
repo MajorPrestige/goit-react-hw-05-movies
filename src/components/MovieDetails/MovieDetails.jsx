@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import s from './movieDetails.module.scss';
 
 const classNameForLink = ({ isActive }) => {
@@ -6,6 +6,9 @@ const classNameForLink = ({ isActive }) => {
 };
 
 const MovieDetails = ({ ...p }) => {
+  const location = useLocation();
+  const prevPage = location.state?.from ?? '/';
+
   return (
     <>
       <div className={s.wrapper}>
@@ -31,10 +34,18 @@ const MovieDetails = ({ ...p }) => {
         go back
       </button>
       <div className={s.linkWrapper}>
-        <NavLink className={classNameForLink} to="cast">
+        <NavLink
+          className={classNameForLink}
+          to="cast"
+          state={{ from: prevPage }}
+        >
           Cast
         </NavLink>
-        <NavLink className={classNameForLink} to="reviews">
+        <NavLink
+          className={classNameForLink}
+          to="reviews"
+          state={{ from: prevPage }}
+        >
           Reviews
         </NavLink>
       </div>

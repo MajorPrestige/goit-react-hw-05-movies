@@ -1,12 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import s from './movieGallery.module.scss';
 
 const MovieGallery = ({ movies }) => {
+  const location = useLocation();
+  console.log(location);
+
   return (
     <ul className={s.list}>
       {movies.map(({ id, title, poster_path }) => (
         <li className={s.item} key={id}>
-          <Link className={s.link} to={`/movies/${id}`}>
+          <Link
+            className={s.link}
+            to={`/movies/${id}`}
+            state={{ from: location }}
+          >
             {poster_path ? (
               <img
                 width={'250px'}

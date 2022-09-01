@@ -18,8 +18,8 @@ const MovieCast = () => {
     <>
       {error && <div>{error}</div>}
       <ul className={s.list}>
-        {cast.map(({ character, name, profile_path }) => (
-          <li className={s.wrapper} key={name}>
+        {cast.map(({ character, name, profile_path }, idx) => (
+          <li className={s.wrapper} key={idx}>
             {profile_path ? (
               <img
                 width={'250px'}
@@ -34,8 +34,8 @@ const MovieCast = () => {
               />
             )}
             <div className={s.inner}>
-              <h2>{character}</h2>
-              <p>{name}</p>
+              <h2>{name}</h2>
+              <p>{character}</p>
             </div>
           </li>
         ))}

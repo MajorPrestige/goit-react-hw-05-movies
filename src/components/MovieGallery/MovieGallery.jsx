@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import s from './movieGallery.module.scss';
 
 const MovieGallery = ({ movies }) => {
@@ -35,3 +36,7 @@ const MovieGallery = ({ movies }) => {
 };
 
 export default MovieGallery;
+
+MovieGallery.propTypes = {
+  movies: PropTypes.array.isRequired,
+};

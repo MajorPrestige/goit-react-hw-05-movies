@@ -38,7 +38,7 @@ const SearchMoviesPage = () => {
       <SearchForm handleSubmit={handleSubmit} />
       {loading && <Loader />}
       {movies && <MovieGallery movies={movies} />}
-      {error && <ErrorMessage />}
+      {(movies?.length === 0 || error) && <ErrorMessage />}
     </Section>
   );
 };

@@ -1,4 +1,5 @@
 import s from './searchForm.module.scss';
+import PropTypes from 'prop-types';
 
 const SearchForm = ({ handleSubmit }) => {
   return (
@@ -14,3 +15,7 @@ const SearchForm = ({ handleSubmit }) => {
 };
 
 export default SearchForm;
+
+SearchForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};

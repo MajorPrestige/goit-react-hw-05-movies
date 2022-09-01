@@ -1,11 +1,12 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import s from './movieDetails.module.scss';
 
 const classNameForLink = ({ isActive }) => {
   return isActive ? s.activeLink : s.Link;
 };
 
-const MovieDetails = ({ ...p }) => {
+const MovieDetails = p => {
   const location = useLocation();
   const prevPage = location.state?.from ?? '/';
 
@@ -54,3 +55,14 @@ const MovieDetails = ({ ...p }) => {
 };
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  p: PropTypes.shape({
+    img: PropTypes.string,
+    title: PropTypes.string,
+    rating: PropTypes.string,
+    overview: PropTypes.string,
+    genres: PropTypes.array,
+    goBack: PropTypes.func.isRequired,
+  }),
+};

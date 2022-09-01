@@ -5,10 +5,12 @@ import Section from 'components/Section/Section';
 import MovieGallery from 'components/MovieGallery/MovieGallery';
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage';
 import SearchForm from 'components/SearchForm/SearchForm';
+import Loader from 'components/Loader/Loader';
 
 const SearchMoviesPage = () => {
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('value');
 
@@ -22,15 +24,19 @@ const SearchMoviesPage = () => {
 
   useEffect(() => {
     if (search) {
+      setLoading(true);
+
       fetchMovieByQuery(search)
         .then(({ data }) => setMovies(data.data.results))
-        .catch(error => setError(error.message));
+        .catch(error => setError(error.message))
+        .finally(() => setLoading(false));
     }
   }, [search]);
 
   return (
     <Section>
       <SearchForm handleSubmit={handleSubmit} />
+      {loading && <Loader />}
       {movies && <MovieGallery movies={movies} />}
       {error && <ErrorMessage />}
     </Section>

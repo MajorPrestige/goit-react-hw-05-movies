@@ -3,7 +3,6 @@ import s from './movieGallery.module.scss';
 
 const MovieGallery = ({ movies }) => {
   const location = useLocation();
-  console.log(location);
 
   return (
     <ul className={s.list}>
